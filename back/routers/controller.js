@@ -38,7 +38,7 @@ const createList = asyncHandler(async (req, res) => {
     throw new Error("Please add a List Name");
   }
   const user = await Friend42.findOne({ id: req.body.id });
-  const newList = { list: req.body.list };
+  const newList = { listName: req.body.list };
   user.friends.push(newList);
   user.save();
   res.status(200).json(user);
@@ -48,14 +48,14 @@ const createList = asyncHandler(async (req, res) => {
 // @route   POST /api/friend
 // @access  Private
 const createFriend = asyncHandler(async (req, res) => {
-  if (!req.body.friendName) {
+  if (!req.body.friend) {
     res.status(400);
     throw new Error("friend not found");
   }
   const user = await Friend42.findOne({ id: req.body.id });
   user.friends
-    .find((item) => item.list === req.body.list)
-    .friends.push(req.body.friendName);
+    .find((item) => item.listName === req.body.list)
+    .friends.push(req.body.friend);
   user.save();
   res.status(200).json(user);
 });
@@ -76,8 +76,23 @@ const createMessage = asyncHandler(async (req, res) => {
 const updateList = asyncHandler(async (req, res) => {
   const user = await Friend42.findOne({ id: req.body.id });
   user.friends.find((item) => {
-    if (item.list === req.body.list) item.list = req.body.newList;
+    if (item.listName === req.body.list) item.listName = req.body.newList;
   });
+  user.save();
+  res.status(200).json(user);
+});
+
+// @desc    Move friend to another List
+// @route   PUT /api/friend
+// @access  Private
+const moveFriend = asyncHandler(async (req, res) => {
+  const user = await Friend42.findOne({ id: req.body.id });
+  user.friends
+    .find((item) => item.listName === req.body.newList)
+    .friends.push(req.body.friend);
+  user.save();
+  const list = user.friends.find((item) => item.listName === req.body.list);
+  list.friends = list.friends.filter((friend) => friend !== req.body.friend);
   user.save();
   res.status(200).json(user);
 });
@@ -87,7 +102,7 @@ const updateList = asyncHandler(async (req, res) => {
 // @access  Private
 const deleteList = asyncHandler(async (req, res) => {
   const user = await Friend42.findOne({ id: req.body.id });
-  user.friends = user.friends.filter((item) => item.list !== req.body.list);
+  user.friends = user.friends.filter((item) => item.listName !== req.body.list);
   user.save();
   res.status(200).json(user);
 });
@@ -97,11 +112,9 @@ const deleteList = asyncHandler(async (req, res) => {
 // @access  Private
 const deleteFriend = asyncHandler(async (req, res) => {
   const user = await Friend42.findOne({ id: req.body.id });
-  const list = user.friends.find((item) => item.list === req.body.list);
-  list.friends = list.friends.filter(
-    (friend) => friend !== req.body.friendName
-  );
-  user.save();
+  const list = user.friends.find((item) => item.listName === req.body.list);
+  list.friends = list.friends.filter((friend) => friend !== req.body.friend);
+  // user.save();
   res.status(200).json(user);
 });
 
@@ -112,6 +125,7 @@ module.exports = {
   createFriend,
   createMessage,
   updateList,
+  moveFriend,
   deleteList,
   deleteFriend,
 };
