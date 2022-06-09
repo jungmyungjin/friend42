@@ -91,7 +91,8 @@ const createFriend = asyncHandler(async (req, res) => {
 const createMessage = asyncHandler(async (req, res) => {
   if (!req.body.id) errorPush(res, 1);
   const user = await Friend42.findOne({ id: req.body.id });
-  if (!user) errorPush(res, 0);
+  // 아이디 생성이 안된 유저가 있을 수 있으니 제외
+  // if (!user) errorPush(res, 0);
   user.message.push(req.body.message);
   user.save();
   res.status(200).json(user);
