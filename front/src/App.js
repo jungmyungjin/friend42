@@ -2,9 +2,8 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import 'semantic-ui-css/semantic.min.css'
 
-import Main from "./Pages/Main";
+import Router from "./Pages/Router";
 
-const ButtonExampleButton = () => <Button>Click Here</Button>;
 const GlobalStyle = createGlobalStyle`
 	/* http://meyerweb.com/eric/tools/css/reset/
    v5.0.1 | 20191019
@@ -63,12 +62,17 @@ table {
 iframe { // iframe overlay 현상 수정
     pointer-events: none;
   }
+
+  html, body, body>div {
+    height: 100%;
+    width:100%;
+  }
 `;
 function App() {
-  return <div className="App">
+  return <>
     <GlobalStyle/>
-    <Main/>
-  </div>;
+    <Router/>
+  </>;
 }
 
 export default App;

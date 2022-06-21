@@ -7,10 +7,10 @@ import { RecoilRoot } from "recoil";
 
 const root = document.getElementById("root");
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RecoilRoot>
     <App />
     </RecoilRoot>
-  </React.StrictMode>,
-  root
+  // </React.StrictMode>
+  ,root
 );
