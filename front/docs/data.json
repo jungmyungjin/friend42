@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "id": "mjung",
+      "name": "myungjin jung",
+      "subName": "mj",
+      "message": [],
+      "friends": [
+        {
+          "listname": "2기 친구들",
+          "friends": ["sujeon", "suhong", "jaeekim"]
+        },
+        {
+          "listname": "python piscien 친구들",
+          "friends": ["jaewpark", "jiychoi", "junmkang"]
+        }
+      ]
+    }
+  ]
+}

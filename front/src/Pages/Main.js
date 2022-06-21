@@ -1,27 +1,25 @@
 import styled from "styled-components";
 import MainProfile from "./MainProfile";
 import MainFriends from "./MainFriends";
-// import ScrollContainer from 'react-indiana-drag-scroll'
-
+import {getPostById, getPosts} from "../apiPost";
 
 const Container = styled.div`
   background-color: antiquewhite;
-  display: flex;
-  width : 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  ////align-items: center;
+  overflow: hidden;
 `;
 
 function Main()
 {
-
+  const data = getPostById("mjung");
+  console.log(data);
   return (<Container>
   <MainProfile/>
     <MainFriends/>
-    <MainFriends/>
-    <MainFriends/>
+
   </Container>);
 }
 

@@ -6,8 +6,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 const Container = styled.div`
   background-color: aqua;
   width:800px;
-  height: 200px;
-  //display: flex;
+  height: 200px;;
   
 `;
 
@@ -30,8 +29,8 @@ const List = styled.span`
 
 function MainFriends() {
   return (<Container>
-    <GroupName>groupName</GroupName>
-    <ScrollContainer className="scroll-container" >
+    <GroupName>42 Friends</GroupName>
+    {/*<ScrollContainer className="scroll-container" >*/}
       <List>
         <CardExampleCard/>
         <CardExampleCard/>
@@ -39,7 +38,7 @@ function MainFriends() {
         <CardExampleCard/>
         <CardExampleCard/>
       </List>
-    </ScrollContainer>
+    {/*</ScrollContainer>*/}
   </Container>
 );
 }

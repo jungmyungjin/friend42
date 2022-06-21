@@ -1,0 +1,34 @@
+{
+  "frinedsList": [
+    {
+      "id": 123,
+      "nickname": "jaewpark",
+      "profileMessage": "해피 코딩!",
+      "online": true,
+      "lastlogin": "2020-04-01",
+      "lastSeated": "c1r2s3",
+      "favorite": true,
+      "profileImg": "www.42seoul.apl/jaewpark.img"
+    },
+    {
+      "id": 125,
+      "nickname": "jiychoi",
+      "profileMessage": "해피 라이프!",
+      "online": true,
+      "lastlogin": "2020-04-02",
+      "lastSeated": "c1r2s3",
+      "favorite": true,
+      "profileImg": "www.42seoul.apl/jiychoi.img"
+    },
+    {
+      "id": 127,
+      "nickname": "mjung",
+      "profileMessage": "해피 라이프!",
+      "online": "true",
+      "lastlogin": "2020-04-02",
+      "lastSeated": "c1r2s3",
+      "favorite": true,
+      "profileImg": "www.42seoul.apl/jiychoi.img"
+    }
+  ]
+}
