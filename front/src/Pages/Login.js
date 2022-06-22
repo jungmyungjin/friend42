@@ -5,19 +5,24 @@ const Container = styled.div`
   background-color: white;
   display: flex;
   justify-content: center;
-  min-height: 300px;
-  min-width: 300px;
+  height: 100%;
+  width: 100%;
+`;
+
+const ContainerSection = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 815px;
+  background-image: url("images/login.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   a{
     height: 60px;
     width: 140px;
   }
-  @media only screen and (max-width: 799px) {
-    background-image: url("images/login.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+  @media only screen and (min-width: 800px) {
+    width: 815px;
   }
 `;
 
@@ -56,11 +61,14 @@ function Login()
 {
   return (
     <Container>
-      <Link to={`/main`}>
-        <LoginBtn>
-          <span>Login</span>
-        </LoginBtn>
-      </Link>
+      <ContainerSection>
+        <Link to={`/main`}>
+          <LoginBtn>
+            <span>Login</span>
+          </LoginBtn>
+        </Link>
+
+      </ContainerSection>
   </Container>);
 }
 
